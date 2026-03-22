@@ -35,7 +35,7 @@ const CONTACT_TEMPLATE_ID = 'YOUR_CONTACT_TEMPLATE_ID';
 - **Property name, address, price** — search for `Lakeview Retreat` / `$250` in the HTML files
 - **Contact email & phone** — search for `hello@jrwrentals.com` / `+1 (555) 000-1234`
 - **Images** — swap the Unsplash URLs with your own property photos
-- **Google Maps embed** — replace the `.map-placeholder` div in `property.html` with an `<iframe>` embed
+- **Google Maps + listings data** — update the listing objects in `js/main.js` (name, address, lat/lng, price) to control cards, map display, and directions links
 
 ### 3. Deploy
 

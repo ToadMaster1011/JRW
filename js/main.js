@@ -268,125 +268,107 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => alert.classList.remove('show'), 6000);
   };
 
-  /* ---- Property Page: Geolocation Map ---- */
-  const propertyMapEl = document.getElementById('property-map');
-  if (propertyMapEl && typeof L !== 'undefined') {
+  /* ---- Property Page: Google Maps + Listings ---- */
+  const listingsGrid = document.getElementById('listings-grid');
+  const mapFrame = document.getElementById('property-map-frame');
 
-    // All properties — extend this list as more are added
-    const properties = [
+  if (listingsGrid && mapFrame) {
+    const listings = [
       {
-        name:    'Lakeview Retreat',
-        address: '123 Lakeview Drive, Sunset Hills, CA',
-        price:   '$250 / night',
-        lat:     34.0736,
-        lng:     -118.4004,
+        id: 'lakeview-retreat',
+        name: 'Lakeview Retreat',
+        address: '123 Lakeview Drive, Sunset Hills, CA 90210',
+        beds: 3,
+        baths: 2,
+        guests: 6,
+        price: '$250 / night',
+        lat: 34.0736,
+        lng: -118.4004,
+      },
+      {
+        id: 'sunset-villa',
+        name: 'Sunset Villa',
+        address: '88 Vista Ridge Road, Sunset Hills, CA 90210',
+        beds: 4,
+        baths: 3,
+        guests: 8,
+        price: '$340 / night',
+        lat: 34.0662,
+        lng: -118.3891,
+      },
+      {
+        id: 'garden-loft',
+        name: 'Garden Loft',
+        address: '245 Oak Garden Lane, Sunset Hills, CA 90210',
+        beds: 2,
+        baths: 1,
+        guests: 4,
+        price: '$195 / night',
+        lat: 34.0817,
+        lng: -118.4128,
+      },
+      {
+        id: 'hillside-haven',
+        name: 'Hillside Haven',
+        address: '19 Canyon Crest Blvd, Sunset Hills, CA 90210',
+        beds: 5,
+        baths: 3,
+        guests: 10,
+        price: '$420 / night',
+        lat: 34.0912,
+        lng: -118.3765,
       }
     ];
 
     const mapStatus = document.getElementById('map-status');
+    const directionsLink = document.getElementById('map-directions-link');
 
-    function haversineDistance(lat1, lng1, lat2, lng2) {
-      const R    = 3958.8; // Earth radius in miles
-      const dLat = (lat2 - lat1) * Math.PI / 180;
-      const dLng = (lng2 - lng1) * Math.PI / 180;
-      const a    = Math.sin(dLat / 2) ** 2
-                 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180)
-                 * Math.sin(dLng / 2) ** 2;
-      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    function updateMapForListing(listing) {
+      const query = encodeURIComponent(`${listing.lat},${listing.lng}`);
+      mapFrame.src = `https://www.google.com/maps?q=${query}&z=14&output=embed`;
+
+      if (mapStatus) {
+        mapStatus.innerHTML = `Showing: <strong>${listing.name}</strong> · ${listing.address}`;
+      }
+
+      if (directionsLink) {
+        const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
+        directionsLink.href = directionsUrl;
+      }
     }
 
-    function propertyMarkerIcon(color) {
-      return L.divIcon({
-        html: `<div style="width:20px;height:20px;background:${color};border:3px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.35);"></div>`,
-        iconSize:   [20, 20],
-        iconAnchor: [10, 10],
-        className:  '',
+    function setActiveCard(activeId) {
+      listingsGrid.querySelectorAll('.listing-card').forEach(card => {
+        card.classList.toggle('active', card.dataset.id === activeId);
       });
     }
 
-    function buildMap(userLat, userLng) {
-      // Determine closest property
-      let closest = properties[0];
-      let minDist = Infinity;
-      properties.forEach(p => {
-        const d = haversineDistance(userLat, userLng, p.lat, p.lng);
-        if (d < minDist) { minDist = d; closest = p; }
+    function createListingCard(listing) {
+      const card = document.createElement('article');
+      card.className = 'listing-card';
+      card.dataset.id = listing.id;
+      card.innerHTML = `
+        <h4>${listing.name}</h4>
+        <p>${listing.address}</p>
+        <div class="listing-meta">
+          <span>${listing.beds} BD · ${listing.baths} BA · ${listing.guests} guests</span>
+          <strong>${listing.price}</strong>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        setActiveCard(listing.id);
+        updateMapForListing(listing);
       });
 
-      const distText = minDist < 0.1
-        ? 'You are right here!'
-        : minDist.toFixed(1) + ' miles from your current location';
-
-      if (mapStatus) {
-        mapStatus.innerHTML = `📍 Closest property: <strong>${closest.name}</strong> — ${distText}`;
-        mapStatus.style.display = 'block';
-      }
-
-      const map = L.map('property-map').fitBounds(
-        [[userLat, userLng], [closest.lat, closest.lng]],
-        { padding: [48, 48], maxZoom: 15 }
-      );
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 18,
-      }).addTo(map);
-
-      // User location marker
-      L.circleMarker([userLat, userLng], {
-        radius: 8, color: '#2563eb', fillColor: '#3b82f6', fillOpacity: 0.9, weight: 2,
-      }).addTo(map).bindPopup('<strong>📍 Your Location</strong>').openPopup();
-
-      // Property markers
-      properties.forEach(p => {
-        const dist = haversineDistance(userLat, userLng, p.lat, p.lng);
-        const isClosest = p === closest;
-        L.marker([p.lat, p.lng], { icon: propertyMarkerIcon(isClosest ? '#f59e0b' : '#6b7280') })
-          .addTo(map)
-          .bindPopup(
-            `<strong>${p.name}</strong><br>` +
-            `${p.address}<br>` +
-            `${p.price}<br>` +
-            `<em>${dist.toFixed(1)} miles away</em>`
-          );
-      });
-
-      // Dashed line: user → closest property
-      L.polyline([[userLat, userLng], [closest.lat, closest.lng]], {
-        color: '#2563eb', weight: 2, dashArray: '6 8', opacity: 0.55,
-      }).addTo(map);
+      return card;
     }
 
-    function showDefaultMap() {
-      if (mapStatus) {
-        mapStatus.textContent = '📍 Showing property location — enable location access to see distance from you.';
-        mapStatus.style.display = 'block';
-      }
-      const p = properties[0];
-      const map = L.map('property-map').setView([p.lat, p.lng], 14);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        maxZoom: 18,
-      }).addTo(map);
-      L.marker([p.lat, p.lng], { icon: propertyMarkerIcon('#f59e0b') })
-        .addTo(map)
-        .bindPopup(`<strong>${p.name}</strong><br>${p.address}<br>${p.price}`)
-        .openPopup();
-    }
+    listings.forEach(listing => listingsGrid.appendChild(createListingCard(listing)));
 
-    if ('geolocation' in navigator) {
-      if (mapStatus) {
-        mapStatus.textContent = '🔍 Detecting your location…';
-        mapStatus.style.display = 'block';
-      }
-      navigator.geolocation.getCurrentPosition(
-        pos => buildMap(pos.coords.latitude, pos.coords.longitude),
-        ()  => showDefaultMap(),
-        { timeout: 8000, maximumAge: 60000 }
-      );
-    } else {
-      showDefaultMap();
-    }
+    const defaultListing = listings[0];
+    setActiveCard(defaultListing.id);
+    updateMapForListing(defaultListing);
   }
 
 });
