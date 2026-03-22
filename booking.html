@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Stay — JRW Rentals</title>
+  <meta name="description" content="Book Lakeview Retreat directly. Fill in your details and we'll confirm your reservation by email." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">JRW<span>Rentals</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="property.html">The Property</a></li>
+          <li><a href="booking.html">Book Now</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline">Inquire</a>
+          <a href="booking.html" class="btn btn-primary">Book Now</a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ PAGE HERO ============ -->
+  <div class="page-hero">
+    <div class="container">
+      <h1>Book Your Stay</h1>
+      <p>Fill in your details below and we'll send a confirmation email within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- ============ BOOKING FORM ============ -->
+  <section class="booking-page">
+    <div class="container">
+      <div class="booking-grid">
+
+        <!-- Form -->
+        <div class="booking-form-card">
+          <h2>Your Booking Details</h2>
+          <form id="booking-form" novalidate>
+
+            <!-- Stay dates -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="book-checkin">Check-in Date *</label>
+                <input type="date" id="book-checkin" name="book-checkin" required />
+              </div>
+              <div class="form-group">
+                <label for="book-checkout">Check-out Date *</label>
+                <input type="date" id="book-checkout" name="book-checkout" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="book-guests">Number of Guests *</label>
+              <select id="book-guests" name="book-guests" required>
+                <option value="" disabled selected>Select number of guests</option>
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5">5 guests</option>
+                <option value="6">6 guests (max)</option>
+              </select>
+            </div>
+
+            <hr class="form-divider" />
+
+            <!-- Guest info -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="book-name">Full Name *</label>
+                <input type="text" id="book-name" name="book-name" placeholder="Jane Smith" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="book-email">Email Address *</label>
+                <input type="email" id="book-email" name="book-email" placeholder="jane@example.com" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="book-phone">Phone Number</label>
+              <input type="tel" id="book-phone" name="book-phone" placeholder="+1 (555) 000-1234" autocomplete="tel" />
+            </div>
+
+            <div class="form-group">
+              <label for="book-requests">Special Requests or Questions</label>
+              <textarea id="book-requests" name="book-requests" rows="4"
+                placeholder="Early check-in, pet accommodation, extra bedding, allergies… let us know!"></textarea>
+            </div>
+
+            <!-- Price breakdown (shown after dates selected) -->
+            <div id="bk-breakdown" class="price-breakdown" style="display:none;margin-bottom:16px;">
+              <div class="price-row">
+                <span>$250 × <span id="bk-nights">—</span></span>
+                <span id="bk-base">—</span>
+              </div>
+              <div class="price-row">
+                <span>Cleaning fee</span>
+                <span id="bk-cleaning">—</span>
+              </div>
+              <div class="price-row">
+                <span>Service fee (12%)</span>
+                <span id="bk-service">—</span>
+              </div>
+              <div class="price-row total">
+                <span>Total</span>
+                <span id="bk-total">—</span>
+              </div>
+            </div>
+
+            <!-- Alert -->
+            <div class="alert" id="booking-alert" role="alert">
+              <span>ℹ️</span>
+              <span class="alert-msg"></span>
+            </div>
+
+            <button type="submit" id="booking-submit-btn" class="btn btn-primary" data-label="Send Booking Request"
+              style="width:100%;padding:14px;font-size:1rem;">
+              <span class="spinner" style="display:none;"></span>
+              <span class="btn-label">Send Booking Request</span>
+            </button>
+
+            <p style="text-align:center;font-size:.82rem;color:var(--mid);margin-top:12px;">
+              🔒 Your information is private and will only be used to manage your booking.
+            </p>
+          </form>
+        </div>
+
+        <!-- Summary sidebar -->
+        <div class="booking-summary">
+          <h3>Booking Summary</h3>
+
+          <div class="summary-img">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="Lakeview Retreat" loading="lazy" />
+          </div>
+
+          <div class="summary-title">Lakeview Retreat</div>
+          <div class="summary-loc">📍 123 Lakeview Drive, Sunset Hills</div>
+
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:20px;font-size:.88rem;color:var(--mid);">
+            ⭐ <strong style="color:var(--dark);">4.9</strong> &nbsp;·&nbsp; 200+ reviews
+          </div>
+
+          <div class="summary-dates">
+            <div class="summary-date-box">
+              <label>Check-in</label>
+              <span id="sum-checkin">—</span>
+            </div>
+            <div class="summary-date-box">
+              <label>Check-out</label>
+              <span id="sum-checkout">—</span>
+            </div>
+          </div>
+
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:20px;">
+            <div class="price-row" style="margin-bottom:8px;">
+              <span style="font-size:.9rem;color:var(--mid);">Duration</span>
+              <span id="sum-nights" style="font-weight:600;">—</span>
+            </div>
+            <div class="price-row total" style="font-size:1.05rem;">
+              <span>Estimated Total</span>
+              <span id="sum-total">—</span>
+            </div>
+          </div>
+
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px;">
+            <p style="font-size:.85rem;color:#15803d;line-height:1.6;">
+              ✅ <strong>Booking by email</strong> — After submitting your request, we'll send a confirmation
+              email within 24 hours with payment instructions.
+            </p>
+          </div>
+
+          <div style="margin-top:20px;">
+            <p style="font-size:.85rem;color:var(--mid);line-height:1.7;">
+              <strong style="color:var(--dark);">Cancellation Policy:</strong><br />
+              Free cancellation up to 7 days before check-in. 50% refund for cancellations 3–7 days out.
+              No refund within 72 hours of check-in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">JRW<span style="color:var(--accent)">Rentals</span></a>
+          <p>A beautiful, fully equipped private home available for short and long-term rental. Book directly and save.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="property.html">The Property</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Home</h4>
+          <ul>
+            <li><a href="property.html#amenities">Amenities</a></li>
+            <li><a href="property.html#rules">House Rules</a></li>
+            <li><a href="property.html#location">Location</a></li>
+            <li><a href="property.html#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@jrwrentals.com">hello@jrwrentals.com</a></li>
+            <li><a href="tel:+15550001234">+1 (555) 000-1234</a></li>
+            <li><a href="contact.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 JRW Rentals. All rights reserved.</span>
+        <span>Built with ❤️ for great stays</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
