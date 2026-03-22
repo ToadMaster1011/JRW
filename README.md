@@ -7,7 +7,7 @@ A full static website for a private property rental (Airbnb-style), with EmailJS
 | File | Description |
 |------|-------------|
 | `index.html` | Homepage — hero, quick-book bar, features, property showcase, amenities, testimonials |
-| `property.html` | Property detail — gallery, amenities, house rules, location, booking sidebar |
+| `property.html` | Property showcase + dynamic detail view (click cards to load selected property details) |
 | `booking.html` | Booking form — guest details, date picker, price calculator, EmailJS submission |
 | `contact.html` | Contact page — inquiry form via EmailJS |
 
@@ -32,7 +32,7 @@ const CONTACT_TEMPLATE_ID = 'YOUR_CONTACT_TEMPLATE_ID';
 
 ### 2. Customise the Content
 
-- **Property name, address, price** — search for `Lakeview Retreat` / `$250` in the HTML files
+- **Properties catalogue** — edit the listing objects in `js/main.js` (cards, detail content, map, pricing)
 - **Contact email & phone** — search for `hello@jrwrentals.com` / `+1 (555) 000-1234`
 - **Images** — swap the Unsplash URLs with your own property photos
 - **Google Maps + listings data** — update the listing objects in `js/main.js` (name, address, lat/lng, price) to control cards, map display, and directions links

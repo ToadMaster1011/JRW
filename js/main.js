@@ -134,9 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebarCheckin  = document.getElementById('sb-checkin');
   const sidebarCheckout = document.getElementById('sb-checkout');
   const sidebarGuests   = document.getElementById('sb-guests');
-  const nightlyRate     = parseFloat(document.getElementById('nightly-rate')?.dataset.rate || 0);
 
   function updateSidebarPrices() {
+    const nightlyRate = parseFloat(document.getElementById('nightly-rate')?.dataset.rate || 0);
     if (!sidebarCheckin || !sidebarCheckout || !nightlyRate) return;
 
     const ci = new Date(sidebarCheckin.value);
@@ -268,60 +268,252 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => alert.classList.remove('show'), 6000);
   };
 
-  /* ---- Property Page: Google Maps + Listings ---- */
-  const listingsGrid = document.getElementById('listings-grid');
+  /* ---- Property Page: Showcase + Details ---- */
+  const featuredGrid = document.getElementById('featured-properties-grid');
   const mapFrame = document.getElementById('property-map-frame');
 
-  if (listingsGrid && mapFrame) {
+  if (featuredGrid && mapFrame) {
     const listings = [
       {
         id: 'lakeview-retreat',
         name: 'Lakeview Retreat',
         address: '123 Lakeview Drive, Sunset Hills, CA 90210',
-        beds: 3,
-        baths: 2,
-        guests: 6,
-        price: '$250 / night',
-        lat: 34.0736,
-        lng: -118.4004,
+        beds: 3, baths: 2, guests: 6, sqft: '1,800', rating: '4.9',
+        price: '$250 / night', nightlyRate: 250,
+        tags: ['Entire Home', 'Family Friendly', 'Pet Friendly', 'Self Check-In'],
+        heroMeta: '📍 123 Lakeview Drive, Sunset Hills · 3 BD · 2 BA · Up to 6 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1000&q=80',
+          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80',
+          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80'
+        ],
+        description: [
+          'Welcome to Lakeview Retreat — a beautifully renovated 3-bedroom home nestled in the peaceful Sunset Hills neighborhood, ideal for families and weekend getaways.',
+          'Enjoy bright open-plan living, a full kitchen, and a large private backyard perfect for BBQ evenings and slow mornings.',
+          'The home offers premium bedding, fast WiFi, and a calm atmosphere that makes short and extended stays equally comfortable.'
+        ],
+        nearby: ['🍽️ Downtown dining district — 0.8 miles', '🛒 Supermarket — 0.5 miles', '🏖️ Lake/beach area — 1.2 miles', '✈️ Regional Airport — 18 miles', '🚌 Bus stop — 3 min walk'],
+        lat: 34.0736, lng: -118.4004,
       },
       {
         id: 'sunset-villa',
         name: 'Sunset Villa',
         address: '88 Vista Ridge Road, Sunset Hills, CA 90210',
-        beds: 4,
-        baths: 3,
-        guests: 8,
-        price: '$340 / night',
-        lat: 34.0662,
-        lng: -118.3891,
+        beds: 4, baths: 3, guests: 8, sqft: '2,200', rating: '4.8',
+        price: '$340 / night', nightlyRate: 340,
+        tags: ['Entire Villa', 'Pool', 'Mountain View', 'Smart Check-In'],
+        heroMeta: '📍 88 Vista Ridge Road, Sunset Hills · 4 BD · 3 BA · Up to 8 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1000&q=80',
+          'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
+          'https://images.unsplash.com/photo-1494526585095-c41746248156?w=600&q=80'
+        ],
+        description: [
+          'Sunset Villa combines luxury interiors with panoramic hill views and generous indoor-outdoor entertaining space.',
+          'A private pool, expansive kitchen, and multiple lounge zones make this a top choice for groups and longer holidays.',
+          'Designed for comfort and style, it offers privacy while staying close to shops and dining.'
+        ],
+        nearby: ['🍽️ Skyline Bistro district — 1.1 miles', '🛒 Organic market — 0.7 miles', '🌅 Scenic lookout — 0.4 miles', '✈️ Regional Airport — 20 miles', '🚌 Bus stop — 5 min walk'],
+        lat: 34.0662, lng: -118.3891,
       },
       {
         id: 'garden-loft',
         name: 'Garden Loft',
         address: '245 Oak Garden Lane, Sunset Hills, CA 90210',
-        beds: 2,
-        baths: 1,
-        guests: 4,
-        price: '$195 / night',
-        lat: 34.0817,
-        lng: -118.4128,
+        beds: 2, baths: 1, guests: 4, sqft: '1,050', rating: '4.7',
+        price: '$195 / night', nightlyRate: 195,
+        tags: ['Loft', 'Couples Retreat', 'Work Friendly', 'Self Check-In'],
+        heroMeta: '📍 245 Oak Garden Lane, Sunset Hills · 2 BD · 1 BA · Up to 4 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1000&q=80',
+          'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80',
+          'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80'
+        ],
+        description: [
+          'Garden Loft is a cozy and modern escape with soft natural light and a peaceful private patio.',
+          'Great for couples or remote workers, this space includes dedicated work areas and thoughtful design touches.',
+          'It is located in a quiet residential lane while still being minutes from local attractions.'
+        ],
+        nearby: ['☕ Artisan coffee strip — 0.5 miles', '🛒 Fresh market — 0.6 miles', '🌳 Community park — 0.2 miles', '✈️ Regional Airport — 17 miles', '🚉 Transit station — 9 min walk'],
+        lat: 34.0817, lng: -118.4128,
       },
       {
         id: 'hillside-haven',
         name: 'Hillside Haven',
         address: '19 Canyon Crest Blvd, Sunset Hills, CA 90210',
-        beds: 5,
-        baths: 3,
-        guests: 10,
-        price: '$420 / night',
-        lat: 34.0912,
-        lng: -118.3765,
+        beds: 5, baths: 3, guests: 10, sqft: '2,900', rating: '5.0',
+        price: '$420 / night', nightlyRate: 420,
+        tags: ['Luxury Home', 'Large Groups', 'Outdoor Dining', 'Premium Views'],
+        heroMeta: '📍 19 Canyon Crest Blvd, Sunset Hills · 5 BD · 3 BA · Up to 10 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1000&q=80',
+          'https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&q=80',
+          'https://images.unsplash.com/photo-1564540583246-934409427776?w=600&q=80'
+        ],
+        description: [
+          'Hillside Haven is a spacious designer home built for memorable group trips and family celebrations.',
+          'Multiple bedrooms, open gathering spaces, and scenic terraces create a premium hosting experience.',
+          'Its elevated location offers privacy and quick access to hiking trails and local entertainment.'
+        ],
+        nearby: ['🥾 Trailhead access — 0.6 miles', '🍷 Wine bar district — 1.4 miles', '🛒 Grocery superstore — 1.0 miles', '✈️ Regional Airport — 22 miles', '🚌 Bus stop — 6 min walk'],
+        lat: 34.0912, lng: -118.3765,
+      },
+      {
+        id: 'coastal-nest',
+        name: 'Coastal Nest',
+        address: '312 Harbor Breeze St, Sunset Hills, CA 90210',
+        beds: 2, baths: 2, guests: 5, sqft: '1,250', rating: '4.8',
+        price: '$230 / night', nightlyRate: 230,
+        tags: ['Near Waterfront', 'Balcony', 'Pet Friendly', 'Self Check-In'],
+        heroMeta: '📍 312 Harbor Breeze St, Sunset Hills · 2 BD · 2 BA · Up to 5 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80',
+          'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80',
+          'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&q=80'
+        ],
+        description: [
+          'Coastal Nest offers modern comfort with breezy interiors and quick access to the waterfront promenade.',
+          'Guests love the private balcony, relaxing color palette, and easy walk to cafes and local shops.',
+          'Ideal for leisure trips that blend calm mornings and vibrant evenings by the water.'
+        ],
+        nearby: ['🌊 Waterfront walk — 0.7 miles', '🍽️ Harbor restaurants — 0.9 miles', '🛒 Mini market — 0.4 miles', '✈️ Regional Airport — 16 miles', '🚌 Bus stop — 4 min walk'],
+        lat: 34.0601, lng: -118.4204,
+      },
+      {
+        id: 'urban-oasis',
+        name: 'Urban Oasis',
+        address: '54 Maple Heights Ave, Sunset Hills, CA 90210',
+        beds: 3, baths: 2, guests: 7, sqft: '1,600', rating: '4.7',
+        price: '$265 / night', nightlyRate: 265,
+        tags: ['City Access', 'Workspace', 'Family Friendly', 'Smart TV'],
+        heroMeta: '📍 54 Maple Heights Ave, Sunset Hills · 3 BD · 2 BA · Up to 7 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1000&q=80',
+          'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80',
+          'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80'
+        ],
+        description: [
+          'Urban Oasis balances peaceful residential living with quick access to downtown hotspots and business zones.',
+          'A practical layout, modern finishes, and dedicated work setup make it great for mixed business-leisure stays.',
+          'This home is a reliable choice for families and small groups seeking convenience and comfort.'
+        ],
+        nearby: ['🛍️ Shopping district — 0.9 miles', '☕ Café row — 0.5 miles', '🛒 Supermarket — 0.6 miles', '✈️ Regional Airport — 19 miles', '🚉 Transit station — 8 min walk'],
+        lat: 34.0755, lng: -118.3669,
+      },
+      {
+        id: 'palm-court',
+        name: 'Palm Court Residence',
+        address: '171 Palm Court Circle, Sunset Hills, CA 90210',
+        beds: 4, baths: 2, guests: 8, sqft: '2,050', rating: '4.9',
+        price: '$315 / night', nightlyRate: 315,
+        tags: ['Courtyard', 'BBQ Area', 'Group Stay', 'Private Parking'],
+        heroMeta: '📍 171 Palm Court Circle, Sunset Hills · 4 BD · 2 BA · Up to 8 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1000&q=80',
+          'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80',
+          'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=80'
+        ],
+        description: [
+          'Palm Court Residence features broad living areas and a landscaped courtyard built for social evenings.',
+          'Comfortable bedrooms, private parking, and thoughtful amenities support easy group travel planning.',
+          'It is positioned in a calm neighborhood with fast access to dining and recreation.'
+        ],
+        nearby: ['🍔 Food street — 0.8 miles', '🌳 Public garden — 0.3 miles', '🛒 Grocery market — 0.7 miles', '✈️ Regional Airport — 18 miles', '🚌 Bus stop — 4 min walk'],
+        lat: 34.0873, lng: -118.3988,
+      },
+      {
+        id: 'ridgeview-estate',
+        name: 'Ridgeview Estate',
+        address: '9 Ridgeview Terrace, Sunset Hills, CA 90210',
+        beds: 5, baths: 4, guests: 12, sqft: '3,400', rating: '5.0',
+        price: '$520 / night', nightlyRate: 520,
+        tags: ['Estate', 'Premium', 'Event Friendly', 'Panoramic Views'],
+        heroMeta: '📍 9 Ridgeview Terrace, Sunset Hills · 5 BD · 4 BA · Up to 12 guests',
+        gallery: [
+          'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1000&q=80',
+          'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=600&q=80',
+          'https://images.unsplash.com/photo-1600607687644-c7531d0d7ab9?w=600&q=80'
+        ],
+        description: [
+          'Ridgeview Estate is our flagship luxury stay with expansive interiors and exceptional sunset-facing terraces.',
+          'Built for large groups, it offers multiple lounge zones, chef-ready kitchen space, and premium amenities.',
+          'If you want a statement property with high-end comfort, this is the ideal choice.'
+        ],
+        nearby: ['🌄 Viewpoint trail — 0.4 miles', '🍽️ Fine dining district — 1.6 miles', '🛒 Gourmet market — 1.1 miles', '✈️ Regional Airport — 24 miles', '🚕 Rideshare pickup zone — 2 min walk'],
+        lat: 34.0964, lng: -118.3847,
       }
     ];
 
     const mapStatus = document.getElementById('map-status');
     const directionsLink = document.getElementById('map-directions-link');
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function updatePropertyDetails(listing) {
+      setText('hero-property-name', listing.name);
+      setText('hero-property-meta', listing.heroMeta);
+      setText('detail-title', `${listing.name} — Entire Home`);
+      setText('detail-location', `📍 ${listing.address}`);
+      setText('stat-bedrooms', String(listing.beds));
+      setText('stat-bathrooms', String(listing.baths));
+      setText('stat-guests', String(listing.guests));
+      setText('stat-sqft', listing.sqft);
+      setText('stat-rating', listing.rating);
+      setText('sidebar-rating', listing.rating);
+      setText('detail-price', `$${listing.nightlyRate}`);
+
+      const rateEl = document.getElementById('nightly-rate');
+      if (rateEl) rateEl.dataset.rate = String(listing.nightlyRate);
+
+      updateSidebarPrices();
+
+      const [main, second, third] = listing.gallery;
+      const galleryMain = document.getElementById('gallery-main');
+      const gallerySecond = document.getElementById('gallery-second');
+      const galleryThird = document.getElementById('gallery-third');
+
+      if (galleryMain) { galleryMain.src = main; galleryMain.alt = `${listing.name} exterior`; }
+      if (gallerySecond) { gallerySecond.src = second; gallerySecond.alt = `${listing.name} interior`; }
+      if (galleryThird) { galleryThird.src = third; galleryThird.alt = `${listing.name} living area`; }
+
+      const tagsWrap = document.getElementById('property-tags');
+      if (tagsWrap) {
+        tagsWrap.innerHTML = '';
+        listing.tags.forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'property-tag';
+          span.textContent = tag;
+          tagsWrap.appendChild(span);
+        });
+      }
+
+      const descWrap = document.getElementById('property-description');
+      if (descWrap) {
+        const heading = descWrap.querySelector('h3');
+        descWrap.innerHTML = '';
+        if (heading) descWrap.appendChild(heading);
+        listing.description.forEach(text => {
+          const p = document.createElement('p');
+          p.textContent = text;
+          descWrap.appendChild(p);
+        });
+      }
+
+      const nearbyList = document.getElementById('nearby-list');
+      if (nearbyList) {
+        nearbyList.innerHTML = '';
+        listing.nearby.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          nearbyList.appendChild(li);
+        });
+      }
+
+      document.title = `${listing.name} — JRW Rentals`;
+    }
 
     function updateMapForListing(listing) {
       const query = encodeURIComponent(`${listing.lat},${listing.lng}`);
@@ -332,43 +524,43 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (directionsLink) {
-        const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
-        directionsLink.href = directionsUrl;
+        directionsLink.href = `https://www.google.com/maps/dir/?api=1&destination=${query}`;
       }
     }
 
     function setActiveCard(activeId) {
-      listingsGrid.querySelectorAll('.listing-card').forEach(card => {
+      featuredGrid.querySelectorAll('.featured-property-card').forEach(card => {
         card.classList.toggle('active', card.dataset.id === activeId);
       });
     }
 
     function createListingCard(listing) {
-      const card = document.createElement('article');
-      card.className = 'listing-card';
+      const card = document.createElement('a');
+      card.className = 'featured-property-card';
+      card.href = `property.html?property=${encodeURIComponent(listing.id)}#property-details`;
       card.dataset.id = listing.id;
       card.innerHTML = `
-        <h4>${listing.name}</h4>
-        <p>${listing.address}</p>
-        <div class="listing-meta">
-          <span>${listing.beds} BD · ${listing.baths} BA · ${listing.guests} guests</span>
-          <strong>${listing.price}</strong>
+        <img class="featured-property-image" src="${listing.gallery[0]}" alt="${listing.name}" loading="lazy" />
+        <div class="featured-property-content">
+          <div class="featured-property-title">${listing.name}</div>
+          <div class="featured-property-address">${listing.address}</div>
+          <div class="featured-property-meta">
+            <span>${listing.beds} BD · ${listing.baths} BA · ${listing.guests} guests</span>
+            <strong>${listing.price}</strong>
+          </div>
         </div>
       `;
-
-      card.addEventListener('click', () => {
-        setActiveCard(listing.id);
-        updateMapForListing(listing);
-      });
-
       return card;
     }
 
-    listings.forEach(listing => listingsGrid.appendChild(createListingCard(listing)));
+    listings.forEach(listing => featuredGrid.appendChild(createListingCard(listing)));
 
-    const defaultListing = listings[0];
-    setActiveCard(defaultListing.id);
-    updateMapForListing(defaultListing);
+    const selectedId = new URLSearchParams(window.location.search).get('property');
+    const selectedListing = listings.find(item => item.id === selectedId) || listings[0];
+
+    setActiveCard(selectedListing.id);
+    updatePropertyDetails(selectedListing);
+    updateMapForListing(selectedListing);
   }
 
 });
