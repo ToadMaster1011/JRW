@@ -268,4 +268,125 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => alert.classList.remove('show'), 6000);
   };
 
+  /* ---- Property Page: Geolocation Map ---- */
+  const propertyMapEl = document.getElementById('property-map');
+  if (propertyMapEl && typeof L !== 'undefined') {
+
+    // All properties — extend this list as more are added
+    const properties = [
+      {
+        name:    'Lakeview Retreat',
+        address: '123 Lakeview Drive, Sunset Hills, CA',
+        price:   '$250 / night',
+        lat:     34.0736,
+        lng:     -118.4004,
+      }
+    ];
+
+    const mapStatus = document.getElementById('map-status');
+
+    function haversineDistance(lat1, lng1, lat2, lng2) {
+      const R    = 3958.8; // Earth radius in miles
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLng = (lng2 - lng1) * Math.PI / 180;
+      const a    = Math.sin(dLat / 2) ** 2
+                 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180)
+                 * Math.sin(dLng / 2) ** 2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function propertyMarkerIcon(color) {
+      return L.divIcon({
+        html: `<div style="width:20px;height:20px;background:${color};border:3px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.35);"></div>`,
+        iconSize:   [20, 20],
+        iconAnchor: [10, 10],
+        className:  '',
+      });
+    }
+
+    function buildMap(userLat, userLng) {
+      // Determine closest property
+      let closest = properties[0];
+      let minDist = Infinity;
+      properties.forEach(p => {
+        const d = haversineDistance(userLat, userLng, p.lat, p.lng);
+        if (d < minDist) { minDist = d; closest = p; }
+      });
+
+      const distText = minDist < 0.1
+        ? 'You are right here!'
+        : minDist.toFixed(1) + ' miles from your current location';
+
+      if (mapStatus) {
+        mapStatus.innerHTML = `📍 Closest property: <strong>${closest.name}</strong> — ${distText}`;
+        mapStatus.style.display = 'block';
+      }
+
+      const map = L.map('property-map').fitBounds(
+        [[userLat, userLng], [closest.lat, closest.lng]],
+        { padding: [48, 48], maxZoom: 15 }
+      );
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      // User location marker
+      L.circleMarker([userLat, userLng], {
+        radius: 8, color: '#2563eb', fillColor: '#3b82f6', fillOpacity: 0.9, weight: 2,
+      }).addTo(map).bindPopup('<strong>📍 Your Location</strong>').openPopup();
+
+      // Property markers
+      properties.forEach(p => {
+        const dist = haversineDistance(userLat, userLng, p.lat, p.lng);
+        const isClosest = p === closest;
+        L.marker([p.lat, p.lng], { icon: propertyMarkerIcon(isClosest ? '#f59e0b' : '#6b7280') })
+          .addTo(map)
+          .bindPopup(
+            `<strong>${p.name}</strong><br>` +
+            `${p.address}<br>` +
+            `${p.price}<br>` +
+            `<em>${dist.toFixed(1)} miles away</em>`
+          );
+      });
+
+      // Dashed line: user → closest property
+      L.polyline([[userLat, userLng], [closest.lat, closest.lng]], {
+        color: '#2563eb', weight: 2, dashArray: '6 8', opacity: 0.55,
+      }).addTo(map);
+    }
+
+    function showDefaultMap() {
+      if (mapStatus) {
+        mapStatus.textContent = '📍 Showing property location — enable location access to see distance from you.';
+        mapStatus.style.display = 'block';
+      }
+      const p = properties[0];
+      const map = L.map('property-map').setView([p.lat, p.lng], 14);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+      L.marker([p.lat, p.lng], { icon: propertyMarkerIcon('#f59e0b') })
+        .addTo(map)
+        .bindPopup(`<strong>${p.name}</strong><br>${p.address}<br>${p.price}`)
+        .openPopup();
+    }
+
+    if ('geolocation' in navigator) {
+      if (mapStatus) {
+        mapStatus.textContent = '🔍 Detecting your location…';
+        mapStatus.style.display = 'block';
+      }
+      navigator.geolocation.getCurrentPosition(
+        pos => buildMap(pos.coords.latitude, pos.coords.longitude),
+        ()  => showDefaultMap(),
+        { timeout: 8000, maximumAge: 60000 }
+      );
+    } else {
+      showDefaultMap();
+    }
+  }
+
 });

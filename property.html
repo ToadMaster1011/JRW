@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 <body>
 
@@ -177,11 +178,8 @@
               <li>✈️ Regional Airport — 18 miles</li>
               <li>🚌 Bus stop — 3 min walk</li>
             </ul>
-            <div class="map-placeholder" aria-label="Map location placeholder">
-              <span>📍</span>
-              <span>123 Lakeview Drive, Sunset Hills</span>
-              <small style="color:var(--mid);font-size:.8rem;">Interactive map — embed Google Maps here</small>
-            </div>
+            <p id="map-status" style="display:none;background:var(--light);border-radius:8px;padding:10px 14px;font-size:.88rem;color:var(--mid);margin-bottom:10px;"></p>
+            <div id="property-map" style="height:360px;border-radius:var(--radius);overflow:hidden;"></div>
           </div>
         </div>
 
@@ -299,6 +297,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLs=" crossorigin=""></script>
   <script src="js/main.js"></script>
 </body>
 </html>
