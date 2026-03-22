@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — JRW Rentals</title>
+  <meta name="description" content="Have a question about the property? Get in touch and we'll respond within 24 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">JRW<span>Rentals</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="property.html">The Property</a></li>
+          <li><a href="booking.html">Book Now</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline">Inquire</a>
+          <a href="booking.html" class="btn btn-primary">Book Now</a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ PAGE HERO ============ -->
+  <div class="page-hero">
+    <div class="container">
+      <h1>Get In Touch</h1>
+      <p>Questions about the property or your stay? We usually respond within a few hours.</p>
+    </div>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact-page">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact info column -->
+        <div class="contact-info">
+          <h2>We'd Love to Hear From You</h2>
+          <p>
+            Whether you want to ask about availability, get more details about the property,
+            or discuss a longer-term arrangement — we're here to help. Use the form or
+            reach out through any of the channels below.
+          </p>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">📧</div>
+              <div class="contact-item-text">
+                <strong>Email</strong>
+                <span>hello@jrwrentals.com</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-text">
+                <strong>Phone / WhatsApp</strong>
+                <span>+1 (555) 000-1234</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-text">
+                <strong>Property Address</strong>
+                <span>123 Lakeview Drive, Sunset Hills, CA 90210</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🕐</div>
+              <div class="contact-item-text">
+                <strong>Response Time</strong>
+                <span>Usually within 2–4 hours, 7 days a week</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick book reminder -->
+          <div style="margin-top:40px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:var(--radius);padding:24px;">
+            <h3 style="font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:10px;">
+              Ready to Book?
+            </h3>
+            <p style="font-size:.9rem;color:var(--mid);line-height:1.7;margin-bottom:16px;">
+              You can submit a booking request directly through our booking page —
+              no account needed.
+            </p>
+            <a href="booking.html" class="btn btn-primary" style="font-size:.9rem;padding:10px 20px;">
+              Go to Booking Page
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="contact-form-card">
+          <h2>Send Us a Message</h2>
+          <form id="contact-form" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Your Name *</label>
+                <input type="text" id="contact-name" name="contact-name" placeholder="Jane Smith" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input type="email" id="contact-email" name="contact-email" placeholder="jane@example.com" required autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Subject *</label>
+              <select id="contact-subject" name="contact-subject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="Availability Inquiry">Availability Inquiry</option>
+                <option value="Booking Question">Booking Question</option>
+                <option value="Pricing & Fees">Pricing &amp; Fees</option>
+                <option value="Pet Policy">Pet Policy</option>
+                <option value="Long-Term Stay">Long-Term Stay</option>
+                <option value="General Question">General Question</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message *</label>
+              <textarea id="contact-message" name="contact-message" rows="6" required
+                placeholder="Tell us what you'd like to know…"></textarea>
+            </div>
+
+            <!-- Alert -->
+            <div class="alert" id="contact-alert" role="alert">
+              <span>ℹ️</span>
+              <span class="alert-msg"></span>
+            </div>
+
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary" data-label="Send Message"
+              style="width:100%;padding:14px;font-size:1rem;">
+              <span class="spinner" style="display:none;"></span>
+              <span class="btn-label">Send Message</span>
+            </button>
+
+            <p style="text-align:center;font-size:.82rem;color:var(--mid);margin-top:12px;">
+              🔒 Your information is kept private and never shared with third parties.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">JRW<span style="color:var(--accent)">Rentals</span></a>
+          <p>A beautiful, fully equipped private home available for short and long-term rental. Book directly and save.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="property.html">The Property</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Home</h4>
+          <ul>
+            <li><a href="property.html#amenities">Amenities</a></li>
+            <li><a href="property.html#rules">House Rules</a></li>
+            <li><a href="property.html#location">Location</a></li>
+            <li><a href="property.html#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@jrwrentals.com">hello@jrwrentals.com</a></li>
+            <li><a href="tel:+15550001234">+1 (555) 000-1234</a></li>
+            <li><a href="contact.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 JRW Rentals. All rights reserved.</span>
+        <span>Built with ❤️ for great stays</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
