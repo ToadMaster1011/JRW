@@ -283,9 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: ['Entire Home', 'Family Friendly', 'Pet Friendly', 'Self Check-In'],
         heroMeta: '📍 123 Lakeview Drive, Sunset Hills · 3 BD · 2 BA · Up to 6 guests',
         gallery: [
-          'Rentals/IMG_20260328_163005 (5).jpg',
-          'Rentals/IMG_20260328_163005 (3).jpg',
-          'Rentals/IMG_20260328_163004 (1).jpg'
+          'Rentals/1-1.jpg',
+          'Rentals/1-2.jpg',
+          'Rentals/1-3.jpg',
+          'Rentals/1-4.jpg'
         ],
         description: [
           'Welcome to Lakeview Retreat — a beautifully renovated 3-bedroom home nestled in the peaceful Sunset Hills neighborhood, ideal for families and weekend getaways.',
@@ -304,9 +305,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: ['Entire Villa', 'Pool', 'Mountain View', 'Smart Check-In'],
         heroMeta: '📍 88 Vista Ridge Road, Sunset Hills · 4 BD · 3 BA · Up to 8 guests',
         gallery: [
-          'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1000&q=80',
-          'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80',
-          'https://images.unsplash.com/photo-1494526585095-c41746248156?w=600&q=80'
+          'Rentals/2-1.jpg',
+          'Rentals/2-2.jpg',
+          'Rentals/2-3.jpg',
+          'Rentals/2-4.jpg'
         ],
         description: [
           'Sunset Villa combines luxury interiors with panoramic hill views and generous indoor-outdoor entertaining space.',
@@ -315,132 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         nearby: ['🍽️ Skyline Bistro district — 1.1 miles', '🛒 Organic market — 0.7 miles', '🌅 Scenic lookout — 0.4 miles', '✈️ Regional Airport — 20 miles', '🚌 Bus stop — 5 min walk'],
         lat: 34.0662, lng: -118.3891,
-      },
-      {
-        id: 'garden-loft',
-        name: 'Garden Loft',
-        address: '245 Oak Garden Lane, Sunset Hills, CA 90210',
-        beds: 2, baths: 1, guests: 4, sqft: '1,050', rating: '4.7',
-        price: '$195 / night', nightlyRate: 195,
-        tags: ['Loft', 'Couples Retreat', 'Work Friendly', 'Self Check-In'],
-        heroMeta: '📍 245 Oak Garden Lane, Sunset Hills · 2 BD · 1 BA · Up to 4 guests',
-        gallery: [
-          'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1000&q=80',
-          'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80',
-          'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80'
-        ],
-        description: [
-          'Garden Loft is a cozy and modern escape with soft natural light and a peaceful private patio.',
-          'Great for couples or remote workers, this space includes dedicated work areas and thoughtful design touches.',
-          'It is located in a quiet residential lane while still being minutes from local attractions.'
-        ],
-        nearby: ['☕ Artisan coffee strip — 0.5 miles', '🛒 Fresh market — 0.6 miles', '🌳 Community park — 0.2 miles', '✈️ Regional Airport — 17 miles', '🚉 Transit station — 9 min walk'],
-        lat: 34.0817, lng: -118.4128,
-      },
-      {
-        id: 'hillside-haven',
-        name: 'Hillside Haven',
-        address: '19 Canyon Crest Blvd, Sunset Hills, CA 90210',
-        beds: 5, baths: 3, guests: 10, sqft: '2,900', rating: '5.0',
-        price: '$420 / night', nightlyRate: 420,
-        tags: ['Luxury Home', 'Large Groups', 'Outdoor Dining', 'Premium Views'],
-        heroMeta: '📍 19 Canyon Crest Blvd, Sunset Hills · 5 BD · 3 BA · Up to 10 guests',
-        gallery: [
-          'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1000&q=80',
-          'https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&q=80',
-          'https://images.unsplash.com/photo-1564540583246-934409427776?w=600&q=80'
-        ],
-        description: [
-          'Hillside Haven is a spacious designer home built for memorable group trips and family celebrations.',
-          'Multiple bedrooms, open gathering spaces, and scenic terraces create a premium hosting experience.',
-          'Its elevated location offers privacy and quick access to hiking trails and local entertainment.'
-        ],
-        nearby: ['🥾 Trailhead access — 0.6 miles', '🍷 Wine bar district — 1.4 miles', '🛒 Grocery superstore — 1.0 miles', '✈️ Regional Airport — 22 miles', '🚌 Bus stop — 6 min walk'],
-        lat: 34.0912, lng: -118.3765,
-      },
-      {
-        id: 'coastal-nest',
-        name: 'Coastal Nest',
-        address: '312 Harbor Breeze St, Sunset Hills, CA 90210',
-        beds: 2, baths: 2, guests: 5, sqft: '1,250', rating: '4.8',
-        price: '$230 / night', nightlyRate: 230,
-        tags: ['Near Waterfront', 'Balcony', 'Pet Friendly', 'Self Check-In'],
-        heroMeta: '📍 312 Harbor Breeze St, Sunset Hills · 2 BD · 2 BA · Up to 5 guests',
-        gallery: [
-          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1000&q=80',
-          'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80',
-          'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&q=80'
-        ],
-        description: [
-          'Coastal Nest offers modern comfort with breezy interiors and quick access to the waterfront promenade.',
-          'Guests love the private balcony, relaxing color palette, and easy walk to cafes and local shops.',
-          'Ideal for leisure trips that blend calm mornings and vibrant evenings by the water.'
-        ],
-        nearby: ['🌊 Waterfront walk — 0.7 miles', '🍽️ Harbor restaurants — 0.9 miles', '🛒 Mini market — 0.4 miles', '✈️ Regional Airport — 16 miles', '🚌 Bus stop — 4 min walk'],
-        lat: 34.0601, lng: -118.4204,
-      },
-      {
-        id: 'urban-oasis',
-        name: 'Urban Oasis',
-        address: '54 Maple Heights Ave, Sunset Hills, CA 90210',
-        beds: 3, baths: 2, guests: 7, sqft: '1,600', rating: '4.7',
-        price: '$265 / night', nightlyRate: 265,
-        tags: ['City Access', 'Workspace', 'Family Friendly', 'Smart TV'],
-        heroMeta: '📍 54 Maple Heights Ave, Sunset Hills · 3 BD · 2 BA · Up to 7 guests',
-        gallery: [
-          'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1000&q=80',
-          'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80',
-          'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80'
-        ],
-        description: [
-          'Urban Oasis balances peaceful residential living with quick access to downtown hotspots and business zones.',
-          'A practical layout, modern finishes, and dedicated work setup make it great for mixed business-leisure stays.',
-          'This home is a reliable choice for families and small groups seeking convenience and comfort.'
-        ],
-        nearby: ['🛍️ Shopping district — 0.9 miles', '☕ Café row — 0.5 miles', '🛒 Supermarket — 0.6 miles', '✈️ Regional Airport — 19 miles', '🚉 Transit station — 8 min walk'],
-        lat: 34.0755, lng: -118.3669,
-      },
-      {
-        id: 'palm-court',
-        name: 'Palm Court Residence',
-        address: '171 Palm Court Circle, Sunset Hills, CA 90210',
-        beds: 4, baths: 2, guests: 8, sqft: '2,050', rating: '4.9',
-        price: '$315 / night', nightlyRate: 315,
-        tags: ['Courtyard', 'BBQ Area', 'Group Stay', 'Private Parking'],
-        heroMeta: '📍 171 Palm Court Circle, Sunset Hills · 4 BD · 2 BA · Up to 8 guests',
-        gallery: [
-          'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1000&q=80',
-          'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80',
-          'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=80'
-        ],
-        description: [
-          'Palm Court Residence features broad living areas and a landscaped courtyard built for social evenings.',
-          'Comfortable bedrooms, private parking, and thoughtful amenities support easy group travel planning.',
-          'It is positioned in a calm neighborhood with fast access to dining and recreation.'
-        ],
-        nearby: ['🍔 Food street — 0.8 miles', '🌳 Public garden — 0.3 miles', '🛒 Grocery market — 0.7 miles', '✈️ Regional Airport — 18 miles', '🚌 Bus stop — 4 min walk'],
-        lat: 34.0873, lng: -118.3988,
-      },
-      {
-        id: 'ridgeview-estate',
-        name: 'Ridgeview Estate',
-        address: '9 Ridgeview Terrace, Sunset Hills, CA 90210',
-        beds: 5, baths: 4, guests: 12, sqft: '3,400', rating: '5.0',
-        price: '$520 / night', nightlyRate: 520,
-        tags: ['Estate', 'Premium', 'Event Friendly', 'Panoramic Views'],
-        heroMeta: '📍 9 Ridgeview Terrace, Sunset Hills · 5 BD · 4 BA · Up to 12 guests',
-        gallery: [
-          'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1000&q=80',
-          'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=600&q=80',
-          'https://images.unsplash.com/photo-1600607687644-c7531d0d7ab9?w=600&q=80'
-        ],
-        description: [
-          'Ridgeview Estate is our flagship luxury stay with expansive interiors and exceptional sunset-facing terraces.',
-          'Built for large groups, it offers multiple lounge zones, chef-ready kitchen space, and premium amenities.',
-          'If you want a statement property with high-end comfort, this is the ideal choice.'
-        ],
-        nearby: ['🌄 Viewpoint trail — 0.4 miles', '🍽️ Fine dining district — 1.6 miles', '🛒 Gourmet market — 1.1 miles', '✈️ Regional Airport — 24 miles', '🚕 Rideshare pickup zone — 2 min walk'],
-        lat: 34.0964, lng: -118.3847,
       }
     ];
 
