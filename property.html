@@ -146,7 +146,7 @@
           <!-- Amenities -->
           <div class="detail-section" id="amenities">
             <h3>Amenities</h3>
-            <div class="amenities-list">
+            <div class="amenities-list" id="amenities-list">
               <div class="amenity-item"><span class="check">✓</span> Shampoo, body soap, and hot water</div>
               <div class="amenity-item"><span class="check">✓</span> Washer and free dryer (in building)</div>
               <div class="amenity-item"><span class="check">✓</span> Essentials, hangers, bed linens, and closet storage</div>
@@ -165,7 +165,7 @@
           <!-- House Rules -->
           <div class="detail-section" id="rules">
             <h3>House Rules</h3>
-            <ul class="rules-list">
+            <ul class="rules-list" id="house-rules-list">
               <li>Check-in after 4:00 PM</li>
               <li>Checkout before 11:00 AM</li>
               <li>Maximum 9 guests</li>
@@ -174,7 +174,7 @@
 
           <div class="detail-section" id="host-info">
             <h3>Host Information</h3>
-            <ul class="rules-list">
+            <ul class="rules-list" id="host-info-list">
               <li>Name: Jonathan Romero</li>
               <li>Hosting status: Superhost · Hosting for 10 months</li>
               <li>Born: 2000s</li>
@@ -186,23 +186,25 @@
 
           <div class="detail-section" id="calendar-info">
             <h3>Calendar Info</h3>
-            <p style="color:var(--mid);line-height:1.8;">March 2026 and April 2026 calendars are currently displayed for booking selection.</p>
+            <p id="calendar-text" style="color:var(--mid);line-height:1.8;">March 2026 and April 2026 calendars are currently displayed for booking selection.</p>
           </div>
 
           <div class="detail-section" id="reviews">
             <h3>Reviews</h3>
-            <p style="color:var(--mid);line-height:1.8;">
-              Rating: 4.83 from 12 reviews.
-            </p>
-            <p style="color:var(--mid);line-height:1.8;">
-              Exact review text is not included here yet. If you share the full review copy you want published,
-              it can be inserted verbatim in this section.
-            </p>
+            <div id="reviews-content">
+              <p style="color:var(--mid);line-height:1.8;">
+                Rating: 4.83 from 12 reviews.
+              </p>
+              <p style="color:var(--mid);line-height:1.8;">
+                Exact review text is not included here yet. If you share the full review copy you want published,
+                it can be inserted verbatim in this section.
+              </p>
+            </div>
           </div>
 
           <div class="detail-section" id="safety">
             <h3>Safety &amp; Property</h3>
-            <ul class="rules-list">
+            <ul class="rules-list" id="safety-list">
               <li>Exterior security cameras on property (front door and back deck)</li>
               <li>Carbon monoxide alarm installed</li>
               <li>Smoke alarm installed</li>
@@ -242,7 +244,7 @@
             <span data-rate="250" id="nightly-rate" style="display:none;"></span>
           </div>
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:20px;font-size:.88rem;color:var(--mid);">
-            ⭐ <strong id="sidebar-rating" style="color:var(--dark);">4.83</strong> &nbsp;·&nbsp; 12 reviews
+            ⭐ <strong id="sidebar-rating" style="color:var(--dark);">4.83</strong> &nbsp;·&nbsp; <span id="sidebar-review-summary">12 reviews</span>
           </div>
 
           <div class="sidebar-form">
