@@ -138,12 +138,21 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--primary);
   letter-spacing: -.02em;
 }
 .nav-logo span { color: var(--accent); }
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
 
 .nav-links {
   display: flex;

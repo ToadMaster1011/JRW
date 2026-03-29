@@ -1,6 +1,6 @@
 /* =========================================
-   JRW Property Rentals — Main JavaScript
-   ========================================= */
+  SWM Lakeside Rentals — Main JavaScript
+  ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -276,12 +276,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const listings = [
       {
         id: 'lakeview-retreat',
-        name: 'Lakeview Retreat',
-        address: '123 Lakeview Drive, Sunset Hills, CA 90210',
-        beds: 3, baths: 2, guests: 6, sqft: '1,800', rating: '4.9',
+        name: 'Two Pine Cottage',
+        address: 'Watervliet, Michigan',
+        beds: 3, baths: 1, guests: 9, sqft: '6 beds', rating: '4.83',
         price: '$250 / night', nightlyRate: 250,
-        tags: ['Entire Home', 'Family Friendly', 'Pet Friendly', 'Self Check-In'],
-        heroMeta: '📍 123 Lakeview Drive, Sunset Hills · 3 BD · 2 BA · Up to 6 guests',
+        tags: ['Entire Home', 'Hosted by Jonathan', 'Pet Friendly', 'Self Check-In'],
+        heroMeta: '📍 Watervliet, Michigan · 3 BR · 6 Beds · 1 Bath · Up to 9 guests',
         gallery: [
           '1-1.jpg',
           '1-2.jpg',
@@ -289,12 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
           '1-4.jpg'
         ],
         description: [
-          'Welcome to Lakeview Retreat — a beautifully renovated 3-bedroom home nestled in the peaceful Sunset Hills neighborhood, ideal for families and weekend getaways.',
-          'Enjoy bright open-plan living, a full kitchen, and a large private backyard perfect for BBQ evenings and slow mornings.',
-          'The home offers premium bedding, fast WiFi, and a calm atmosphere that makes short and extended stays equally comfortable.'
+          'Our cozy Two Pine Cottage is tucked away in Watervliet, Michigan and is only a short drive from South Haven.',
+          'The home is set up for relaxed family trips with a full kitchen, backyard space, and practical amenities for longer stays.',
+          'Hosted by Jonathan Romero, the cottage offers easy self check-in and a comfortable home base for exploring the lakeshore.'
         ],
-        nearby: ['🍽️ Downtown dining district — 0.8 miles', '🛒 Supermarket — 0.5 miles', '🏖️ Lake/beach area — 1.2 miles', '✈️ Regional Airport — 18 miles', '🚌 Bus stop — 3 min walk'],
-        lat: 34.0736, lng: -118.4004,
+        nearby: ['🏖️ South Haven beaches — about 20 min drive', '🍷 Southwest Michigan wineries — short drive', '🛒 Local groceries — nearby', '🍽️ Downtown Watervliet dining — nearby', '🚗 Easy road access for weekend trips'],
+        lat: 42.1861, lng: -86.2600,
       },
       {
         id: 'sunset-villa',
@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      document.title = `${listing.name} — JRW Rentals`;
+      document.title = `${listing.name} — SWM Lakeside Rentals`;
     }
 
     function updateMapForListing(listing) {
