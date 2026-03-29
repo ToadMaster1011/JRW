@@ -283,10 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: ['Entire Home', 'Family Friendly', 'Pet Friendly', 'Self Check-In'],
         heroMeta: '📍 123 Lakeview Drive, Sunset Hills · 3 BD · 2 BA · Up to 6 guests',
         gallery: [
-          'Rentals/1-1.jpg',
-          'Rentals/1-2.jpg',
-          'Rentals/1-3.jpg',
-          'Rentals/1-4.jpg'
+          '1-1.jpg',
+          '1-2.jpg',
+          '1-3.jpg',
+          '1-4.jpg'
         ],
         description: [
           'Welcome to Lakeview Retreat — a beautifully renovated 3-bedroom home nestled in the peaceful Sunset Hills neighborhood, ideal for families and weekend getaways.',
@@ -305,10 +305,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: ['Entire Villa', 'Pool', 'Mountain View', 'Smart Check-In'],
         heroMeta: '📍 88 Vista Ridge Road, Sunset Hills · 4 BD · 3 BA · Up to 8 guests',
         gallery: [
-          'Rentals/2-1.jpg',
-          'Rentals/2-2.jpg',
-          'Rentals/2-3.jpg',
-          'Rentals/2-4.jpg'
+          '2-1.jpg',
+          '2-2.jpg',
+          '2-3.jpg',
+          '2-4.jpg'
         ],
         description: [
           'Sunset Villa combines luxury interiors with panoramic hill views and generous indoor-outdoor entertaining space.',
