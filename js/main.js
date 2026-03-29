@@ -283,9 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: ['Entire Home', 'Family Friendly', 'Pet Friendly', 'Self Check-In'],
         heroMeta: '📍 123 Lakeview Drive, Sunset Hills · 3 BD · 2 BA · Up to 6 guests',
         gallery: [
-          'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1000&q=80',
-          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80',
-          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80'
+          'Rentals/IMG_20260328_163005 (5).jpg',
+          'Rentals/IMG_20260328_163005 (3).jpg',
+          'Rentals/IMG_20260328_163004 (1).jpg'
         ],
         description: [
           'Welcome to Lakeview Retreat — a beautifully renovated 3-bedroom home nestled in the peaceful Sunset Hills neighborhood, ideal for families and weekend getaways.',
