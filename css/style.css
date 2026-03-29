@@ -203,7 +203,7 @@ img { max-width: 100%; display: block; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&q=80') center/cover no-repeat;
+  background: url('../1-1.jpg') center/cover no-repeat;
   filter: brightness(.45);
 }
 
