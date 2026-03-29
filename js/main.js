@@ -293,17 +293,55 @@ document.addEventListener('DOMContentLoaded', () => {
           'The home is set up for relaxed family trips with a full kitchen, backyard space, and practical amenities for longer stays.',
           'Hosted by Jonathan Romero, the cottage offers easy self check-in and a comfortable home base for exploring the lakeshore.'
         ],
+        amenities: [
+          'Shampoo, body soap, and hot water',
+          'Washer and free dryer (in building)',
+          'Essentials, hangers, bed linens, and closet storage',
+          'TV, air conditioning, ceiling fan, and central heating',
+          'Exterior security cameras, smoke alarm, CO alarm',
+          'Wifi for streaming and remote work',
+          'Full kitchen with refrigerator, microwave, freezer, and dishwasher',
+          'Stainless steel gas stove and oven',
+          'Coffee maker, blender, dining table, and coffee supplies',
+          'Backyard, BBQ grill, and free parking on premises',
+          'Pets allowed and self check-in with smart lock',
+          '35 total amenities available during your stay'
+        ],
+        houseRules: [
+          'Check-in after 4:00 PM',
+          'Checkout before 11:00 AM',
+          'Maximum 9 guests'
+        ],
+        hostInfo: [
+          'Name: Jonathan Romero',
+          'Hosting status: Superhost · Hosting for 10 months',
+          'Born: 2000s',
+          'Favorite Song: My Shot (Hamilton)',
+          'Bio: Traveling the U.S. with his wife',
+          'Response Rate: 50% · Responds within a day'
+        ],
+        calendarInfo: 'March 2026 and April 2026 calendars are currently displayed for booking selection.',
+        reviews: [
+          'Rating: 4.83 from 12 reviews.',
+          'Exact review text can be inserted here verbatim when provided.'
+        ],
+        reviewSummary: '12 reviews',
+        safety: [
+          'Exterior security cameras on property (front door and back deck)',
+          'Carbon monoxide alarm installed',
+          'Smoke alarm installed'
+        ],
         nearby: ['🏖️ South Haven beaches — about 20 min drive', '🍷 Southwest Michigan wineries — short drive', '🛒 Local groceries — nearby', '🍽️ Downtown Watervliet dining — nearby', '🚗 Easy road access for weekend trips'],
         lat: 42.1861, lng: -86.2600,
       },
       {
         id: 'sunset-villa',
-        name: 'Sunset Villa',
-        address: '88 Vista Ridge Road, Sunset Hills, CA 90210',
-        beds: 4, baths: 3, guests: 8, sqft: '2,200', rating: '4.8',
+        name: 'Lake Side Cottage',
+        address: 'Coloma, Michigan',
+        beds: 3, baths: 1, guests: 6, sqft: '4', rating: 'New',
         price: '$340 / night', nightlyRate: 340,
-        tags: ['Entire Villa', 'Pool', 'Mountain View', 'Smart Check-In'],
-        heroMeta: '📍 88 Vista Ridge Road, Sunset Hills · 4 BD · 3 BA · Up to 8 guests',
+        tags: ['Entire Home', 'New Listing', 'Hosted by Jonathan', 'Self Check-In'],
+        heroMeta: '📍 Coloma, Michigan · 3 BR · 4 Beds · 1 Bath · Up to 6 guests',
         gallery: [
           '2-1.jpg',
           '2-2.jpg',
@@ -311,12 +349,55 @@ document.addEventListener('DOMContentLoaded', () => {
           '2-4.jpg'
         ],
         description: [
-          'Sunset Villa combines luxury interiors with panoramic hill views and generous indoor-outdoor entertaining space.',
-          'A private pool, expansive kitchen, and multiple lounge zones make this a top choice for groups and longer holidays.',
-          'Designed for comfort and style, it offers privacy while staying close to shops and dining.'
+          'Our Lake Side cottage is nestled on the south side of our lovely local Little Paw Paw lake.',
+          'It is just a quick 3-minute stroll to the beach, perfect for water sports fans or anyone who loves fishing.',
+          'This beach cottage, with its modern charm, is ideal for those seeking a peaceful escape from the hustle and bustle of the city. The Lake Side cottage is only 10 minutes from Lake Michigan, and for our wine enthusiasts, we are smack dab in the middle of all the wineries.'
         ],
-        nearby: ['🍽️ Skyline Bistro district — 1.1 miles', '🛒 Organic market — 0.7 miles', '🌅 Scenic lookout — 0.4 miles', '✈️ Regional Airport — 20 miles', '🚌 Bus stop — 5 min walk'],
-        lat: 34.0662, lng: -118.3891,
+        amenities: [
+          'Bathtub, shampoo, conditioner, body soap, and hot water',
+          'Washer and free dryer (in building)',
+          'Bed linens and cotton linens',
+          'TV, air conditioning, ceiling fan, and central heating',
+          'Exterior security cameras on property',
+          'Ring doorbell and two floodlight cameras (garage front and backyard entrance)',
+          'Smoke alarm, carbon monoxide alarm, and first aid kit',
+          'Wifi',
+          'Kitchen with GE refrigerator, microwave, and cooking basics',
+          'Dishes and silverware, dishwasher, GE stainless steel gas stove',
+          'GE stainless steel single oven, coffee maker, baking sheet, blender',
+          'Barbecue utensils (grill, charcoal, bamboo or iron skewers), dining table, coffee',
+          'Waterfront, beach access, and lake access',
+          'Private backyard and BBQ grill',
+          'Free parking on premises',
+          'Pets allowed and self check-in with smart lock',
+          'Not included: Essentials'
+        ],
+        houseRules: [
+          'Check-in after 4:00 PM',
+          'Checkout before 11:00 AM',
+          'Maximum 6 guests'
+        ],
+        hostInfo: [
+          'Name: Jonathan Romero',
+          'Hosting status: Superhost · Hosting for 10 months',
+          'Born: 2000s',
+          'Favorite Song: My Shot (Hamilton)',
+          'Bio: Traveling the U.S. with his wife',
+          'Response Rate: 50% · Responds within a day'
+        ],
+        calendarInfo: 'March 2026 and April 2026 calendars are currently displayed for booking selection.',
+        reviews: [
+          'New listing, no reviews yet.',
+          'Host has 12 reviews for other places to stay.'
+        ],
+        reviewSummary: 'No reviews yet',
+        safety: [
+          'Exterior security cameras on property',
+          'Carbon monoxide alarm installed',
+          'Smoke alarm installed'
+        ],
+        nearby: ['🏖️ Little Paw Paw lake beach — 3 min walk', '🌊 Lake Michigan — about 10 min drive', '🍷 Local wineries — nearby', '🎣 Fishing and water sports access', '🚗 Easy road access for weekend trips'],
+        lat: 42.1866, lng: -86.3068,
       }
     ];
 
@@ -339,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setText('stat-sqft', listing.sqft);
       setText('stat-rating', listing.rating);
       setText('sidebar-rating', listing.rating);
+      setText('sidebar-review-summary', listing.reviewSummary || 'No reviews yet');
       setText('detail-price', `$${listing.nightlyRate}`);
 
       const rateEl = document.getElementById('nightly-rate');
@@ -386,6 +468,75 @@ document.addEventListener('DOMContentLoaded', () => {
           li.textContent = item;
           nearbyList.appendChild(li);
         });
+      }
+
+      const amenitiesList = document.getElementById('amenities-list');
+      if (amenitiesList && Array.isArray(listing.amenities)) {
+        amenitiesList.innerHTML = '';
+        listing.amenities.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'amenity-item';
+          div.innerHTML = '<span class="check">✓</span> ' + item;
+          amenitiesList.appendChild(div);
+        });
+      }
+
+      const houseRulesList = document.getElementById('house-rules-list');
+      if (houseRulesList && Array.isArray(listing.houseRules)) {
+        houseRulesList.innerHTML = '';
+        listing.houseRules.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          houseRulesList.appendChild(li);
+        });
+      }
+
+      const hostInfoList = document.getElementById('host-info-list');
+      if (hostInfoList && Array.isArray(listing.hostInfo)) {
+        hostInfoList.innerHTML = '';
+        listing.hostInfo.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          hostInfoList.appendChild(li);
+        });
+      }
+
+      setText('calendar-text', listing.calendarInfo || 'Calendar information will be available soon.');
+
+      const reviewsContent = document.getElementById('reviews-content');
+      if (reviewsContent && Array.isArray(listing.reviews)) {
+        reviewsContent.innerHTML = '';
+        listing.reviews.forEach(text => {
+          const p = document.createElement('p');
+          p.style.color = 'var(--mid)';
+          p.style.lineHeight = '1.8';
+          p.textContent = text;
+          reviewsContent.appendChild(p);
+        });
+      }
+
+      const safetyList = document.getElementById('safety-list');
+      if (safetyList && Array.isArray(listing.safety)) {
+        safetyList.innerHTML = '';
+        listing.safety.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          safetyList.appendChild(li);
+        });
+      }
+
+      const guestsSelect = document.getElementById('sb-guests');
+      if (guestsSelect) {
+        const maxGuests = Number(listing.guests) || 1;
+        const previousValue = Number(guestsSelect.value) || 2;
+        guestsSelect.innerHTML = '';
+        for (let i = 1; i <= maxGuests; i += 1) {
+          const option = document.createElement('option');
+          option.value = String(i);
+          option.textContent = `${i} guest${i > 1 ? 's' : ''}`;
+          guestsSelect.appendChild(option);
+        }
+        guestsSelect.value = String(Math.min(previousValue, maxGuests));
       }
 
       document.title = `${listing.name} — SWM Lakeside Rentals`;
